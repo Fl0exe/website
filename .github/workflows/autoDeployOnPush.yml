@@ -5,4 +5,7 @@ jobs:
   check-bats-version:
     runs-on: raspi
     steps:
-      - run: 'curl -X POST https://api.pabler.de/website/update -H "apiKey: 703aca47-345b-497f-89b3-ebed2ffc2487"'
+      - name: Send POST request
+        run: |
+          curl -X POST https://api.pabler.de/website/update \
+               -H "apiKey: ${{ secrets.API_KEY }}"
