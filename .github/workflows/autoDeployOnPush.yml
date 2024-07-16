@@ -3,7 +3,7 @@ run-name: ${{ github.actor }} pushed a Commit. Updating Deployment
 on: [push]
 jobs:
   check-bats-version:
-    runs-on: raspi
+    runs-on: Linux
     steps:
       - name: Send POST request
         run: |
