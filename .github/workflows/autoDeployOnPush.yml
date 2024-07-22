@@ -2,7 +2,7 @@ name: autoDeployOnPush
 run-name: ${{ github.actor }} pushed a Commit. Updating Deployment
 on: [push]
 jobs:
-  check-bats-version:
+  deploy-on-server:
     runs-on: Linux
     steps:
       - name: Send POST request
