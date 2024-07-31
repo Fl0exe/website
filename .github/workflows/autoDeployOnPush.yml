@@ -7,5 +7,5 @@ jobs:
     steps:
       - name: Send POST request
         run: |
-          curl -X POST https://api.pabler.de/website/update \
+          curl -X POST ${{ secrets.ENDPOINT_URL }} \
                -H "apiKey: ${{ secrets.API_KEY }}"
