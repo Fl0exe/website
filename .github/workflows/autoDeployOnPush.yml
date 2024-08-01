@@ -1,4 +1,4 @@
--name: autoDeployOnPush
+name: autoDeployOnPush
 run-name: ${{ github.actor }} pushed a Commit. Updating Deployment
 on: [push]
 jobs:
