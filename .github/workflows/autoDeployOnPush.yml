@@ -1,4 +1,4 @@
-name: autoDeployOnPush
+-name: autoDeployOnPush
 run-name: ${{ github.actor }} pushed a Commit. Updating Deployment
 on: [push]
 jobs:
@@ -8,7 +8,7 @@ jobs:
       GITHUB_WORKSPACE: ${{ github.LOCAL_REPO_PATH }}
     steps:
       - name: Echo Variables
-        run: echo ${{ GITHUB_WORKSPACE }}
+        run: echo ${{ env.GITHUB_WORKSPACE }}
     
       - name: Stop server
         run: pm2 delete website || echo "Not running"
