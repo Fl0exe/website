@@ -11,27 +11,21 @@ jobs:
         run: echo "/usr/local/bin" >> $GITHUB_PATH
     
       - name: Stop server
-        working-directory: ${{ github.LOCAL_REPO_PATH }}
         run: pm2 delete website || echo "Not running"
 
       - name: Remove old version
-        working-directory: ${{ github.LOCAL_REPO_PATH }}
         run: rm -rf *
         
       - name: Checkout repository
-        working-directory: ${{ github.LOCAL_REPO_PATH }}
-        run: git clone $REPO_URL ${{ github.LOCAL_REPO_PATH }}
+        run: git clone $REPO_URL
 
       - name: Install dependencies
-        working-directory: ${{ github.LOCAL_REPO_PATH }}
         run: npm i
         
       - name: Build the project
-        working-directory: ${{ github.LOCAL_REPO_PATH }}
         run: npm run build
         
       - name: Deploy
-        working-directory: ${{ github.LOCAL_REPO_PATH }}
         run: |
           pm2 start "npm run start" --name website
           pm2 save
