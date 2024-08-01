@@ -7,6 +7,9 @@ jobs:
     env:
       REPO_URL: ${{ github.SERVER_URL }}/${{ github.REPOSITORY }}
     steps:
+      - name: Add /usr/local/bin to PATH
+        run: echo "/usr/local/bin" >> $GITHUB_PATH
+    
       - name: Stop server
         working-directory: ${{ github.LOCAL_REPO_PATH }}
         run: pm2 delete website
