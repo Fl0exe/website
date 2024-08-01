@@ -3,7 +3,7 @@ run-name: ${{ github.actor }} pushed a Commit. Updating Deployment
 on: [push]
 jobs:
   build:
-    runs-on: [self-hosted, raspi]
+    runs-on: [self-hosted, linux, ARM64]
     env:
       REPO_URL: ${{ github.SERVER_URL }}/${{ github.REPOSITORY }}
       LOCAL_REPO_PATH: ${{ secrets.LOCAL_REPO_PATH }}
