@@ -4,26 +4,20 @@ on: [push]
 jobs:
   build:
     runs-on: [self-hosted, raspi]
-
     env:
       REPO_URL: ${{ github.SERVER_URL }}/${{ github.REPOSITORY }}
-      LOCAL_REPO_PATH: ${{ env.LOCAL_REPO_PATH}}
-
+      LOCAL_REPO_PATH: ${{ secrets.LOCAL_REPO_PATH }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 'latest'
-
+          node-version: latest
       - name: Install dependencies
         run: npm install
-
       - name: Build the project
         run: npm run build
-
       - name: Deploy
         run: |
           pm2 stop nextjs-server || echo "Server not running"
