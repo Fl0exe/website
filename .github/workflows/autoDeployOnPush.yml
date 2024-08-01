@@ -24,7 +24,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: ${{ github.LOCAL_REPO_PATH }}
-        run: npm ci
+        run: npm i
         
       - name: Build the project
         working-directory: ${{ github.LOCAL_REPO_PATH }}
