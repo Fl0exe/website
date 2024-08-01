@@ -4,9 +4,9 @@ on: [push]
 jobs:
   build:
     runs-on: [self-hosted, linux, ARM64]
-    steps:    
+    steps:
       - name: Stop server
-        run: pm2 delete website || echo "Not running"
+        run: echo "/usr/local/bin" >> $GITHUB_PATH && pm2 delete website || echo "Not running"
         
       - name: Checkout repository
         uses: actions/checkout@v4
