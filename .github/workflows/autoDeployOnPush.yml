@@ -4,12 +4,7 @@ on: [push]
 jobs:
   build:
     runs-on: [self-hosted, linux, ARM64]
-    env:
-      GITHUB_WORKSPACE: ${{ github.LOCAL_REPO_PATH }}
-    steps:
-      - name: Echo Variables
-        run: echo ${{ env.GITHUB_WORKSPACE }}
-    
+    steps:    
       - name: Stop server
         run: pm2 delete website || echo "Not running"
         
