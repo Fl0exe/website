@@ -6,7 +6,7 @@ jobs:
     runs-on: [self-hosted, linux, ARM64]
     steps:
       - name: Stop server
-        run: echo "/usr/local/bin" >> $GITHUB_PATH && pm2 delete website || echo "Not running"
+        run: echo "/usr/local/bin/pm2" >> $GITHUB_PATH && pm2 delete website || echo "Not running"
         
       - name: Checkout repository
         uses: actions/checkout@v4
