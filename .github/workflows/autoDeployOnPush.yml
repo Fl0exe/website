@@ -4,21 +4,27 @@ on: [push]
 jobs:
   build:
     runs-on: [self-hosted, linux, ARM64]
+    env:
+      REPO_URL: ${{ github.SERVER_URL }}/${{ github.REPOSITORY }}
     steps:
       - name: Stop server
-        run: echo "/usr/local/bin/pm2" >> $GITHUB_PATH && pm2 delete website || echo "Not running"
+        working-directory: ${{ github.LOCAL_REPO_PATH }}
+        run: pm2 delete website
         
       - name: Checkout repository
-        uses: actions/checkout@v4
-        
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v4.0.3
-        
+        working-directory: ${{ github.LOCAL_REPO_PATH }}
+        run: git clone $REPO_URL ${{ github.LOCAL_REPO_PATH }} -q
+
       - name: Install dependencies
-        run: npm install
+        working-directory: ${{ github.LOCAL_REPO_PATH }}
+        run: npm ci
         
       - name: Build the project
+        working-directory: ${{ github.LOCAL_REPO_PATH }}
         run: npm run build
         
       - name: Deploy
-        run: pm2 start "npm run start" --name website || echo "Not Running" && pm2 save
+        working-directory: ${{ github.LOCAL_REPO_PATH }}
+        run: |
+          pm2 start "npm run start" --name website
+          pm2 save
