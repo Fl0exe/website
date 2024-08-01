@@ -2,10 +2,34 @@ name: autoDeployOnPush
 run-name: ${{ github.actor }} pushed a Commit. Updating Deployment
 on: [push]
 jobs:
-  deploy-on-server:
-    runs-on: Linux
+  build:
+    runs-on: [self-hosted, raspi]
+
+    env:
+      REPO_URL: ${{ github.SERVER_URL }}/${{ github.REPOSITORY }}
+      LOCAL_REPO_PATH: ${{ env.LOCAL_REPO_PATH}}
+
     steps:
-      - name: Send POST request
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 'latest'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the project
+        run: npm run build
+
+      - name: Deploy
         run: |
-          curl -X POST ${{ secrets.ENDPOINT_URL }} \
-               -H "apiKey: ${{ secrets.API_KEY }}"
+          pm2 stop nextjs-server || echo "Server not running"
+          rm -rf $LOCAL_REPO_PATH
+          git clone $REPO_URL $LOCAL_REPO_PATH -q
+          cd $LOCAL_REPO_PATH
+          npm install
+          npm run build
+          pm2 start nextjs-server
