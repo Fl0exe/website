@@ -16,7 +16,7 @@ jobs:
         
       - name: Checkout repository
         working-directory: ${{ github.LOCAL_REPO_PATH }}
-        run: git clone $REPO_URL ${{ github.LOCAL_REPO_PATH }} -q
+        run: git clone $REPO_URL ${{ github.LOCAL_REPO_PATH }}
 
       - name: Install dependencies
         working-directory: ${{ github.LOCAL_REPO_PATH }}
