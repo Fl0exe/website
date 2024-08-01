@@ -13,6 +13,10 @@ jobs:
       - name: Stop server
         working-directory: ${{ github.LOCAL_REPO_PATH }}
         run: pm2 delete website || echo "Not running"
+
+      - name: Remove old version
+        working-directory: ${{ github.LOCAL_REPO_PATH }}
+        run: rm -rf *
         
       - name: Checkout repository
         working-directory: ${{ github.LOCAL_REPO_PATH }}
