@@ -6,7 +6,7 @@ jobs:
     runs-on: [self-hosted, linux, ARM64]
     env:
       REPO_URL: ${{ github.server_url }}/${{ github.repository }}
-      LOCAL_REPO_PATH: ${{ repository.local_repo_path }}
+      LOCAL_REPO_PATH: ${{ env.local_repo_path }}
     steps:
       - name: Add /usr/local/bin to PATH
         run: echo "/usr/local/bin" >> $GITHUB_PATH
