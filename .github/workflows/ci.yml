@@ -1,32 +1,35 @@
 name: CI
-run-name: ${{ github.actor }} pushed Something. Updating Deployment
+run-name: ${{ github.actor }} pushed something. Updating Deployment
+
 on: [push]
+
 jobs:
   build:
     runs-on: [self-hosted, linux, ARM64]
     env:
       REPO_URL: ${{ github.server_url }}/${{ github.repository }}
+      LOCAL_REPO_PATH: $HOME
     steps:
       - name: Add /usr/local/bin to PATH
         run: echo "/usr/local/bin" >> $GITHUB_PATH
-    
+
       - name: Stop server
         run: pm2 delete website || echo "Not running"
 
       - name: Remove old version
         run: |
-          cd ${{ env.LOCAL_REPO_PATH }}
-          rm -rf ${{ github.event.repository.name }}
-        
+          rm -rf ${{ env.LOCAL_REPO_PATH }}/${{ github.event.repository.name }}
+
       - name: Checkout repository
         run: |
+          mkdir -p ${{ env.LOCAL_REPO_PATH }}
           cd ${{ env.LOCAL_REPO_PATH }}
           git clone $REPO_URL
 
       - name: Install dependencies
         run: |
           cd ${{ env.LOCAL_REPO_PATH }}/${{ github.event.repository.name }}
-          npm i
+          npm install
         
       - name: Build the project
         run: |
@@ -35,6 +38,6 @@ jobs:
         
       - name: Deploy
         run: |
-          cd ${{ env.LOCAL_REPO_PATH }}/${{ github.event.repository.name }}  
+          cd ${{ env.LOCAL_REPO_PATH }}/${{ github.event.repository.name }}
           pm2 start "npm run start" --name website
           pm2 save
