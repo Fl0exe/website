@@ -1,11 +1,11 @@
 name: CI
 run-name: ${{ github.actor }} pushed something. Updating Deployment
 
-on: [push]
+on: [ push ]
 
 jobs:
   build:
-    runs-on: [self-hosted, linux, ARM64]
+    runs-on: [ self-hosted, linux, ARM64 ]
     env:
       REPO_URL: ${{ github.server_url }}/${{ github.repository }}
       LOCAL_REPO_PATH: $HOME
@@ -30,12 +30,12 @@ jobs:
         run: |
           cd ${{ env.LOCAL_REPO_PATH }}/${{ github.event.repository.name }}
           npm install
-        
+
       - name: Build the project
         run: |
           cd ${{ env.LOCAL_REPO_PATH }}/${{ github.event.repository.name }}
           npm run build
-        
+
       - name: Deploy
         run: |
           cd ${{ env.LOCAL_REPO_PATH }}/${{ github.event.repository.name }}
