@@ -1,43 +1,65 @@
 @media (prefers-color-scheme: light) {
-  :root {
-    --text: rgb(10, 7, 17);
-    --background: rgb(244, 241, 251);
-    --primary: rgb(101, 53, 217);
-    --secondary: rgb(154, 119, 241);
-    --accent: rgb(125, 74, 250);
-  }
+    :root {
+        --text: rgb(10, 7, 17);
+        --background: rgb(244, 241, 251);
+        --primary: rgb(101, 53, 217);
+        --secondary: rgb(154, 119, 241);
+        --accent: rgb(125, 74, 250);
+    }
 }
+
 @media (prefers-color-scheme: dark) {
-  :root {
-    --text: rgb(240, 237, 248);
-    --background: rgb(8, 4, 16);
-    --primary: rgb(87, 38, 201);
-    --secondary: rgb(48, 14, 134);
-    --accent: rgb(54, 5, 179);
-  }
+    :root {
+        --text: rgb(240, 237, 248);
+        --background: rgb(8, 4, 16);
+        --primary: rgb(145, 91, 255);
+        --secondary: rgb(106, 47, 255);
+        --accent: rgb(117, 62, 255);
+    }
 }
 
 :root {
-  --rounding: 15px
+    --rounding: 15px
 }
 
 * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    scrollbar-color: var(--accent) var(--background);
 }
 
 html,
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
+    max-width: 100vw;
+    overflow-x: hidden;
+    max-height: 100vh;
 }
 
 body {
-  color: rgb(var(--text));
+    background-color: var(--background);
+    color: var(--text);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-height: 100vh;
+    gap: 1.5rem;
+}
+
+.childrenContainer {
+    flex-grow: 1;
+    height: 100vh;
+    overflow: scroll;
+    overflow-x: hidden;
 }
 
 a,
 Link {
-  text-decoration: none;
+    text-decoration: none;
+    color: var(--primary);
+}
+
+a:hover,
+Link:hover {
+    text-decoration: underline;
 }
