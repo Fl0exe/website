@@ -12,6 +12,10 @@
     border-right: 1px solid var(--accent);
 }
 
+.navbarItem {
+padding: 0.5rem;
+}
+
 .logo {
     width: 10vh;
     height: 10vh;
