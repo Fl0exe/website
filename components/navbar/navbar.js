@@ -18,13 +18,13 @@ function NavbarItem({href, children}) {
     if (href === "/" && children === "Logo") {
         return (
             <Link href={href}>
-                <img src={"/images/pabler.svg"} alt={"Pabler"} className={styles.logo}/>
+                <img src={"/images/pabler.png"} alt={"Pabler"} className={styles.logo}/>
             </Link>
         );
     }
 
     return (
-        <Link href={href}>
+        <Link className={styles.navbarItem} href={href}>
             {children}
         </Link>
     );
