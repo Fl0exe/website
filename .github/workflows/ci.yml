@@ -31,11 +31,6 @@ jobs:
           cd ${{ env.LOCAL_REPO_PATH }}/${{ github.event.repository.name }}
           npm install
 
-      - name: Build the project
-        run: |
-          cd ${{ env.LOCAL_REPO_PATH }}/${{ github.event.repository.name }}
-          npm run build
-
       - name: Deploy
         run: |
           cd ${{ env.LOCAL_REPO_PATH }}/${{ github.event.repository.name }}
