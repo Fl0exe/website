@@ -1,4 +1,5 @@
 import styles from "./page.module.css";
+import Image from "next/image";
 
 async function fetchMeme() {
     const response = await fetch(`https://meme-api.com/gimme?cache-bust=${Date.now()}`);
