@@ -2,6 +2,7 @@
 
 import React, {useEffect, useState} from 'react';
 import styles from './badge-carousel.module.css';
+import Image from "next/image";
 
 export default function BadgeCarousel() {
     const [svgFiles, setSvgFiles] = useState([]);
@@ -21,11 +22,12 @@ export default function BadgeCarousel() {
     const carouselRow = (direction, keyPrefix) => (
         <div className={`${styles.carouselRow} ${styles[direction]} ${isHovered ? styles.paused : ''}`}>
             {svgFiles.concat(svgFiles).map((file, index) => (
-                <img
+                <Image
                     key={`${keyPrefix}-${index}`}
                     src={`/skill-badges/${file}`}
                     alt={`Badge ${index + 1}`}
                     className={styles.badge}
+                    width={500} height={500}
                 />
             ))}
         </div>

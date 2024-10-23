@@ -15,7 +15,7 @@ export default function Footer() {
 function Social({href, name}) {
     return (
         <Link className={styles.socialIconContainer} href={href}>
-            <img className={styles.socialIcon} src={`/images/logos/${name}-logo.svg`} alt={name}/>
+            <Image className={styles.socialIcon} src={`/images/logos/${name.toLowerCase()}-logo.svg`} alt={name} width={200} height={200}/>
         </Link>
     );
 }

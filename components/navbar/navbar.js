@@ -5,21 +5,27 @@ import styles from "./navbar.module.css";
 import Link from "next/link";
 import items from "../../config/navbar.items.json";
 import Footer from "./footer/footer";
+import Image from "next/image";
 
 export default function Navbar() {
-    const [isNavbarVisible, setIsNavbarVisible] = useState(window.innerWidth > 600);
-    const [isToggleButtonVisible, setIsToggleButtonVisible] = useState(window.innerWidth <= 600);
+    const [isNavbarVisible, setIsNavbarVisible] = useState(false);
+    const [isToggleButtonVisible, setIsToggleButtonVisible] = useState(false);
 
     useEffect(() => {
-        const handleResize = () => {
-            const isLargeScreen = window.innerWidth > 600;
-            setIsNavbarVisible(isLargeScreen);
-            setIsToggleButtonVisible(!isLargeScreen);
-        };
+        if (typeof window !== 'undefined') {
+            setIsNavbarVisible(window.innerWidth > 600);
+            setIsToggleButtonVisible(window.innerWidth <= 600);
 
-        window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
+            const handleResize = () => {
+                setIsNavbarVisible(window.innerWidth > 600);
+                setIsToggleButtonVisible(window.innerWidth <= 600);
+            };
+
+            window.addEventListener('resize', handleResize);
+            return () => window.removeEventListener('resize', handleResize);
+        }
     }, []);
+
 
     const toggleNavbar = () => {
         setIsNavbarVisible(!isNavbarVisible);
@@ -55,7 +61,7 @@ function NavbarItem({href, children}) {
     if (href === "/" && children === "Logo") {
         return (
             <Link href={href}>
-                <img src={"/images/pabler.png"} alt={"Pabler"} className={styles.logo}/>
+                <Image src={"/images/pabler.png"} alt={"Pabler"} className={styles.logo} width={500} height={500}/>
             </Link>
         );
     }
