@@ -15,7 +15,7 @@ export default async function RandomMeme() {
     return (
         <main className={styles.container}>
             <h1>{meme.title}</h1>
-            <img className={styles.meme} src={meme.url} alt={meme.title} />
+            <img className={styles.meme} src={meme.url} alt={meme.title}/>
         </main>
     );
 }

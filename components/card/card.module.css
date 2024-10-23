@@ -1,0 +1,36 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-content: flex-start;
+    border: 1px solid var(--primary);
+    border-radius: var(--rounding);
+    padding: 2rem;
+    position: relative;
+    width: max-content;
+    max-width: 500px;
+    min-width: 300px;
+}
+
+.card:has(.topImage) {
+    padding-top: calc(2rem + 25px);
+}
+
+.topImage {
+    position: absolute;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    transform: translate(10%, -50%);
+    width: 100px;
+    height: auto;
+    border-radius: 50%;
+    border: 1px solid var(--primary);
+    background: var(--background);
+}
+
+.topImage::before {
+    display: block;
+    height: 50px;
+    position: relative;
+}
