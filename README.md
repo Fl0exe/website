@@ -1,3 +1,4 @@
 This is my Website lol
 
-[![CI](https://github.com/Fl0exe/website/actions/workflows/ci.yml/badge.svg)](https://github.com/Fl0exe/website/actions/workflows/ci.yml)
+[![pipeline status](http://gitlab.pabler.de/Fl0exe/website/badges/master/pipeline.svg)](http://gitlab.pabler.de/Fl0exe/website/-/commits/master)
+
