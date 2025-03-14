@@ -1,0 +1,29 @@
+stages:
+  - deploy
+
+deploy:
+  stage: deploy
+  tags:
+    - linux
+  variables:
+    # Verwende GitLabs eigene CI-Variablen, um den Repository-URL zusammenzusetzen.
+    REPO_URL: "$CI_SERVER_URL/$CI_PROJECT_PATH.git"
+    LOCAL_REPO_PATH: "$HOME"
+  script:
+    - echo "Füge /usr/local/bin zum PATH hinzu"
+    - export PATH="/usr/local/bin:$PATH"
+    - echo "Stoppe den Server"
+    - pm2 delete website || echo "Not running"
+    - echo "Entferne alte Version"
+    - rm -rf $LOCAL_REPO_PATH/$CI_PROJECT_NAME
+    - echo "Klonen des Repositories"
+    - mkdir -p $LOCAL_REPO_PATH
+    - git clone $REPO_URL
+    - cd $LOCAL_REPO_PATH/$CI_PROJECT_NAME
+    - echo "Installiere Abhängigkeiten"
+    - npm install
+    - echo "Baue das Projekt"
+    - npm run build
+    - echo "Starte den Dienst"
+    - pm2 start "npm run start" --name website
+    - pm2 save
