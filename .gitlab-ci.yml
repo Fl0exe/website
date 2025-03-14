@@ -5,14 +5,13 @@ deploy:
   stage: deploy
   tags:
     - linux
-  variables:
-    # Verwende GitLabs eigene CI-Variablen, um den Repository-URL zusammenzusetzen.
-    REPO_URL: "$CI_SERVER_URL/$CI_PROJECT_PATH.git"
-    LOCAL_REPO_PATH: "$HOME"
   script:
     - echo "Füge /usr/local/bin zum PATH hinzu"
     - export PATH="/usr/local/bin:$PATH"
-    
+    - export LOCAL_REPO_PATH="$HOME"
+    - export REPO_URL="$CI_SERVER_URL/$CI_PROJECT_PATH.git"
+
+
     - echo "Stoppe den Server"
     - pm2 delete website || echo "Not running"
     
