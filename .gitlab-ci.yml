@@ -14,21 +14,21 @@ deploy:
 
     - echo "Stoppe den Server"
     - pm2 delete website || echo "Not running"
-    
+
     - echo "Entferne alte Version"
     - rm -rf $LOCAL_REPO_PATH/$CI_PROJECT_NAME
 
     - echo "Klonen des Repositories"
     - mkdir -p $LOCAL_REPO_PATH
-    - git clone $REPO_URL $LOCAL_REPO_PATH/$CI_PROJECT_NAME 
+    - git clone $REPO_URL $LOCAL_REPO_PATH/$CI_PROJECT_NAME
     - cd $LOCAL_REPO_PATH/$CI_PROJECT_NAME
-    
+
     - echo "Installiere Abhängigkeiten"
     - npm install
-    
+
     - echo "Baue das Projekt"
     - npm run build
-    
+
     - echo "Starte den Dienst"
     - cd $LOCAL_REPO_PATH/$CI_PROJECT_NAME
     - pm2 start "npm run start" --name website
