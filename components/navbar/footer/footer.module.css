@@ -6,7 +6,6 @@
     width: 2rem;
     height: auto;
     aspect-ratio: 1;
-
 }
 
 @media (prefers-color-scheme: dark) {
