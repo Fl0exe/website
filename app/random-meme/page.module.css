@@ -1,8 +1,12 @@
-.meme {
+.memeWrapper {
     max-width: 90%;
     max-height: 90%;
     min-width: 50%;
     min-height: 50%;
+    position: relative;
+}
+
+.meme {
     object-fit: contain;
 }
 
