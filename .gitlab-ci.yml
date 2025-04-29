@@ -5,6 +5,8 @@ build_image:
   stage: build
   only:
     - master
+  tags: 
+    - linux
   image: docker:latest
   services:
     - docker:dind
