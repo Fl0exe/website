@@ -1,35 +1,11 @@
 stages:
-  - deploy
+  - build
 
-deploy:
-  stage: deploy
+build:
+  stage: build
   tags:
     - linux
   script:
-    - echo "Füge /usr/local/bin zum PATH hinzu"
-    - export PATH="/usr/local/bin:$PATH"
-    - export LOCAL_REPO_PATH="$HOME"
-    - export REPO_URL="$CI_SERVER_URL/$CI_PROJECT_PATH.git"
-
-
-    - echo "Stoppe den Server"
-    - pm2 delete website || echo "Not running"
-
-    - echo "Entferne alte Version"
-    - rm -rf $LOCAL_REPO_PATH/$CI_PROJECT_NAME
-
-    - echo "Klonen des Repositories"
-    - mkdir -p $LOCAL_REPO_PATH
-    - git clone $REPO_URL $LOCAL_REPO_PATH/$CI_PROJECT_NAME
-    - cd $LOCAL_REPO_PATH/$CI_PROJECT_NAME
-
-    - echo "Installiere Abhängigkeiten"
-    - npm install
-
-    - echo "Baue das Projekt"
-    - npm run build
-
-    - echo "Starte den Dienst"
-    - cd $LOCAL_REPO_PATH/$CI_PROJECT_NAME
-    - pm2 start "npm run start" --name website
-    - pm2 save
+    - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
+    - docker build -t "$CI_REGISTRY_IMAGE:${CI_COMMIT_SHA:0:8}:latest" .
+    - docker push "$CI_REGISTRY_IMAGE:${CI_COMMIT_SHA:0:8}:latest"
