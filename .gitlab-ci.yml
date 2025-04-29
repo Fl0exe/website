@@ -1,3 +1,7 @@
+before_script:
+  - set -x  # aktiviert Debug-Ausgabe
+  - env | grep CI_  # zeigt alle CI-Variablen
+
 stages:
   - build
 
