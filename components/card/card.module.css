@@ -1,18 +1,38 @@
-.card {
+.cardBase {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
     align-content: flex-start;
     border: 1px solid var(--primary);
     border-radius: var(--rounding);
     padding: 2rem;
     position: relative;
-    width: max-content;
-    max-width: 500px;
     min-width: 300px;
+    flex-shrink: 1;
+    justify-content: flex-start;
 }
 
-.card:has(.topImage) {
+/* Standardkarte */
+.cardDefault {
+    composes: cardBase;
+    width: 100%;
+}
+
+/* Zentrierte Karte */
+.cardCenter {
+    composes: cardBase;
+    width: 100%;
+    max-width: 500px;
+    align-self: center;
+}
+
+/* Expandierende Karte */
+.cardExpand {
+    composes: cardBase;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.cardBase:has(img) {
     padding-top: calc(2rem + 25px);
 }
 
