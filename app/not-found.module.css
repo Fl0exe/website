@@ -1,9 +1,9 @@
-.errcode {
+.errorCode {
     margin-top: -3vw;
     font-size: 10vw;
 }
 
-.errmessage {
+.errorMessage {
     font-size: 3vw;
     margin-bottom: 2vw;
 }
@@ -18,7 +18,7 @@
     position: relative;
 }
 
-.errimage {
+.errorImage {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -29,7 +29,7 @@
 }
 
 @media (prefers-color-scheme: light) {
-    .errimage {
+    .errorImage {
         filter: invert(1);
     }
 }
