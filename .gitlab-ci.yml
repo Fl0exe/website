@@ -1,8 +1,9 @@
 stages:
   - build
 
-build_image:
-  stage: build
+build:
+  stage:
+    - build
   only:
     - master
   tags:
