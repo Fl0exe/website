@@ -61,7 +61,9 @@ function NavbarItem({href, children}) {
     if (href === "/" && children === "Logo") {
         return (
             <Link href={href}>
-                <Image src={"/images/pabler.png"} alt={"Pabler"} className={styles.logo} width={500} height={500}/>
+                <div className={styles.logo}>
+                    <Image src={"/images/pabler.png"} alt={"Pabler"} fill className={styles.logo}/>
+                </div>
             </Link>
         );
     }

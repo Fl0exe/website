@@ -38,22 +38,15 @@
     color: var(--text) !important;
 }
 
-.main {
-    display: flex;
-    flex-direction: column;
-    flex-shrink: 0;
-    height: 100vh;
-    max-width: 20vw;
-    min-width: 5vw;
-}
-
 .navbarItem {
     padding: 0.5rem;
 }
 
 .logo {
-    width: 100px;
-    height: auto;
+    display: block;
+    width: 100%;
+    aspect-ratio: 1;
+    position: relative;
 }
 
 @media (prefers-color-scheme: light) {
