@@ -1,12 +1,10 @@
-before_script:
-  - set -x  # aktiviert Debug-Ausgabe
-  - env | grep CI_  # zeigt alle CI-Variablen
-
 stages:
   - build
+  - cleanup
 
-build_image:
+docker_build_and_push:
   stage: build
+  resource_group: docker_pipeline_lock
   only:
     - master
   tags:
@@ -16,3 +14,17 @@ build_image:
     - docker build -t $CI_REGISTRY_IMAGE:latest .
     - docker push $CI_REGISTRY_IMAGE:latest
 
+cleanup_docker_artifacts:
+  stage: cleanup
+  resource_group: docker_pipeline_lock
+  only:
+    - master
+  tags:
+    - linux
+  needs:
+    - docker_build_and_push
+  script:
+    - echo "Dangling Images (werden gelöscht):"
+    - docker images -f "dangling=true"
+    - docker image prune -f
+    - docker builder prune -f
