@@ -7,11 +7,15 @@
 }
 
 .center {
-    align-self: center;
-    width: fit-content;
     display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
     gap: 1rem;
-    flex-wrap: nowrap;
+    max-width: 100%;
+}
+
+.center > * {
+    flex: 1 1 160px;
 }
 
 .emoji {
