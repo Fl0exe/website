@@ -32,8 +32,12 @@
     flex-shrink: 0;
 }
 
-.cardBase:has(img) {
+.cardBase:has(> .topImage:first-child) {
     padding-top: calc(2rem + 25px);
+}
+
+.cardBase .cardBase:has(> .topImage:first-child) {
+    margin-top: 50px;
 }
 
 .topImage {
@@ -42,6 +46,7 @@
     top: 0;
     left: 0;
     transform: translate(10%, -50%);
+    aspect-ratio: 1;
     width: 100px;
     height: auto;
     border-radius: 50%;

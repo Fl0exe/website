@@ -1,8 +1,9 @@
 import styles from "./page.module.css";
 import React from "react";
-import BadgeWall from "@/components/badge-carousel/badge-wall";
+import BadgeWall from "@/components/badge-wall/badge-wall";
 import Card from "@/components/card/card";
 import Image from "next/image";
+import Projects from "@/components/projects/projects"
 
 export default function Home() {
     return (
@@ -24,14 +25,18 @@ export default function Home() {
                     </p>
                 </Card>
             </div>
-            <Card mode={"expand"}>
+            <Card>
                 <h3 className={styles.center}>The Software and Hardware I have worked with</h3>
                 <BadgeWall/></Card>
-            <Card mode={"expand"}>
+            <Card>
                 <p>
                     I originally made this site to showcase my skills and projects. (It does that pretty well as you can
                     see.) It also taught me a lot about web-development, git, CI/CD pipelines and Docker.
                 </p>
+            </Card>
+            <Card>
+                <h3 className={styles.center}>My current Projects on GitLab</h3>
+                <Projects />
             </Card>
         </main>
     );
