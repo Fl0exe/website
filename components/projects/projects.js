@@ -4,8 +4,10 @@ import globs from "@/app/page.module.css"
 import Image from "next/image";
 import { Gitlab } from "@gitbeaker/rest";
 import Card from "@/components/card/card"
+import { unstable_noStore as noStore } from 'next/cache';
 
 export default async function Projects() {
+  noStore();
 
   const PLACEHOLDER_AVATAR = "/images/gl-placeholder.png";
   const api = new Gitlab({
@@ -21,7 +23,7 @@ export default async function Projects() {
       <Card topImage={project.avatar_url || PLACEHOLDER_AVATAR}>
       <div className="card-content">
       <h3>{project.name}</h3>
-      <p>{project.description || "No description available."}</p>
+      <p className={styles.description}>{project.description || "No description available."}</p>
       </div>
       </Card>
       </a>
