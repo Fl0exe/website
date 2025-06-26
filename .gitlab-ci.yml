@@ -5,6 +5,8 @@ stages:
 
 env_test:
   stage: test
+  tags:
+  - linux
   script:
     - echo "DOCKER_HOST=$DOCKER_HOST"
     - docker info
