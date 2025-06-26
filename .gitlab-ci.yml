@@ -1,6 +1,14 @@
 stages:
+  - test
   - build
   - cleanup
+
+env_test:
+  stage: test
+  script:
+    - echo "DOCKER_HOST=$DOCKER_HOST"
+    - docker info
+
 
 docker_build_and_push:
   stage: build
