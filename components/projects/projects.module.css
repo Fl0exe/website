@@ -1,0 +1,4 @@
+.description {
+  text-overflow: ellipsis;
+  text-wrap: nowrap;
+}
