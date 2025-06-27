@@ -19,7 +19,9 @@
 }
 
 :root {
-    --rounding: 15px
+    --rounding: 15px;
+    --outline-size: 2px;
+    --outline-color: var(--background);
 }
 
 * {
