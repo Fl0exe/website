@@ -6,7 +6,7 @@ import Link from "next/link";
 import items from "../../config/navbar.items.json";
 import Hamburger from "@/public/icons/hamburger-menu.svg";
 import Image from "next/image";
-import SignIn from "./signin/signin";
+import SignIn from "./signin";
 import { SessionProvider } from "next-auth/react";
 
 export default function Navbar() {

@@ -27,7 +27,7 @@ export default function SignupPage() {
       });
 
       if (!res?.ok) {
-        setError("Login nach Signup fehlgeschlagen");
+        setError("Failed to log in after Sign Up");
         setLoading(false);
         return;
       }
@@ -35,16 +35,13 @@ export default function SignupPage() {
       router.push("/short");
     } catch (err) {
       console.error(err);
-      setError(err.message || "Fehler beim Signup");
+      setError(err.message || "Error while Signing Up");
       setLoading(false);
     }
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      style={{ display: "flex", flexDirection: "column", width: 300 }}
-    >
+    <form onSubmit={handleSubmit}>
       <h1>Sign Up</h1>
 
       <input
@@ -63,10 +60,10 @@ export default function SignupPage() {
         required
       />
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p className={styles.error}>{error}</p>}
 
       <button type="submit" disabled={loading}>
-        {loading ? "Lade..." : "Account erstellen"}
+        {loading ? "Loading..." : "Create Account"}
       </button>
     </form>
   );

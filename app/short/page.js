@@ -3,6 +3,7 @@ import { authOptions } from "@/lib/auth";
 import { PrismaClient } from "@prisma/client";
 import { redirect } from "next/navigation";
 import { createShortLink, editLink, deleteLink } from "@/lib/links";
+import styles from "./page.module.css";
 
 const prisma = new PrismaClient();
 
@@ -48,52 +49,40 @@ export default async function Page() {
   const links = user.links || [];
 
   return (
-    <main style={{ padding: "2rem" }}>
-      <h1>URL Shortener Dashboard</h1>
-
+    <main className={styles.container}>
       {/* --- New Link --- */}
-      <form action={handleCreate} style={{ marginBottom: "1rem" }}>
+      <form action={handleCreate} className={styles.mainForm}>
         <input name="shortUrl" placeholder="Short (optional)" />
         <input name="url" placeholder="https://example.com" required />
-        <button type="submit">Shorten</button>
+        <button type="submit">Crunch it!</button>
       </form>
 
       {/* --- List Links --- */}
-      <ul>
+      <ul className={styles.linkList}>
         {links.map((l) => (
-          <li key={l.id} style={{ marginBottom: "0.5rem" }}>
-            <a
-              href={`/s/${l.shortCode}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {process.env.NEXT_PUBLIC_BASE_URL + "/s/" + l.shortCode}
-            </a>
-            {" → "}
-            {l.url}
-
+          <li key={l.id} className={styles.link}>
             {/* Edit Form */}
-            <form
-              action={handleEdit}
-              style={{ display: "inline", marginLeft: "0.5rem" }}
-            >
+            <form action={handleEdit} className={styles.editForm}>
               <input type="hidden" name="id" value={l.id} />
-              <input name="url" defaultValue={l.url} style={{ width: 200 }} />
-              <input
-                name="shortUrl"
-                defaultValue={l.shortCode}
-                style={{ width: 100 }}
-              />
+              <span>
+                <a
+                  href={`/s/${l.shortCode}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {process.env.NEXT_PUBLIC_BASE_URL + "/s/"}
+                </a>
+                <input name="shortUrl" defaultValue={l.shortCode} />
+              </span>
+              {" → "}
+              <input name="url" defaultValue={l.url} />
               <button type="submit">Edit</button>
             </form>
 
             {/* Delete Form */}
-            <form
-              action={handleDelete}
-              style={{ display: "inline", marginLeft: "0.5rem" }}
-            >
+            <form action={handleDelete} className={styles.deleteForm}>
               <input type="hidden" name="id" value={l.id} />
-              <button type="submit" style={{ color: "red" }}>
+              <button type="submit" className={styles.scaryButton}>
                 Delete
               </button>
             </form>
