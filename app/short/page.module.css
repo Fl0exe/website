@@ -1,0 +1,44 @@
+.scaryButton {
+  border: var(--border-thickness) solid var(--catppuccin-red);
+  background-color: transparent;
+  color: var(--catppuccin-red);
+}
+
+.container {
+  width: 100%;
+}
+
+.mainForm {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  height: min-content;
+  width: 100%;
+  margin-block: 2rem;
+}
+
+.linkList {
+  list-style: none;
+  width: 100%;
+}
+
+.link {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.editForm {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.5rem;
+  width: max-content;
+}
+
+.deleteForm {
+  width: min-content;
+}

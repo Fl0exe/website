@@ -38,3 +38,8 @@ next-env.d.ts
 /.idea/
 
 /app/generated/prisma
+
+.env
+
+/prisma/dev.db
+/prisma/migrations/

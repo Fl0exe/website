@@ -16,11 +16,7 @@
     "path": "/random-meme"
   },
   {
-    "name": "This will load for a very long time",
+    "name": "Progress?",
     "path": "/progress"
-  },
-  {
-    "name": "404",
-    "path": "/someRandomStringThatDoesntMakeAnySense"
   }
 ]

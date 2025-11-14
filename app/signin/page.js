@@ -18,11 +18,8 @@ export default function Login() {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      style={{ display: "flex", flexDirection: "column", width: 300 }}
-    >
-      <h1>Login</h1>
+    <form onSubmit={handleSubmit}>
+      <h1>Sign In</h1>
 
       <input
         value={email}
@@ -37,7 +34,9 @@ export default function Login() {
         placeholder="Password"
       />
 
-      <button type="submit">Einloggen</button>
+      <button type="submit" className={"button"}>
+        Let me in
+      </button>
     </form>
   );
 }
