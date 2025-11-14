@@ -14,5 +14,13 @@
   {
     "name": "Random Meme",
     "path": "/random-meme"
+  },
+  {
+    "name": "This will load for a very long time",
+    "path": "/progress"
+  },
+  {
+    "name": "404",
+    "path": "/someRandomStringThatDoesntMakeAnySense"
   }
 ]

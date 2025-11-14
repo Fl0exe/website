@@ -1,0 +1,19 @@
+.socialIconContainer {
+  display: flex;
+  align-items: center;
+}
+
+.socialIcon {
+  width: 2.5rem;
+  height: auto;
+  aspect-ratio: 1;
+  padding-right: 0.75em;
+  fill: var(--secondary);
+}
+
+.main {
+  flex-direction: column;
+  display: flex;
+  justify-content: left;
+  gap: 1vh;
+}

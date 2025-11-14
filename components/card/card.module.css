@@ -1,61 +1,61 @@
 .cardBase {
-    display: flex;
-    flex-direction: column;
-    align-content: flex-start;
-    border: 1px solid var(--primary);
-    border-radius: var(--rounding);
-    padding: 2rem;
-    position: relative;
-    min-width: 300px;
-    flex-shrink: 1;
-    justify-content: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  border: var(--border-thickness) solid var(--primary);
+  border-radius: var(--rounding);
+  padding: 2rem;
+  position: relative;
+  min-width: 300px;
+  flex-shrink: 1;
+  justify-content: flex-start;
 }
 
 /* Standardkarte */
 .cardDefault {
-    composes: cardBase;
-    width: 100%;
+  composes: cardBase;
+  width: 100%;
 }
 
 /* Zentrierte Karte */
 .cardCenter {
-    composes: cardBase;
-    width: 100%;
-    max-width: 500px;
-    align-self: center;
+  composes: cardBase;
+  width: 100%;
+  max-width: 500px;
+  align-self: center;
 }
 
 /* Expandierende Karte */
 .cardExpand {
-    composes: cardBase;
-    width: 100%;
-    flex-shrink: 0;
+  composes: cardBase;
+  width: 100%;
+  flex-shrink: 0;
 }
 
 .cardBase:has(> .topImage:first-child) {
-    padding-top: calc(2rem + 25px);
+  padding-top: calc(2rem + 25px);
 }
 
 .cardBase .cardBase:has(> .topImage:first-child) {
-    margin-top: 50px;
+  margin-top: 50px;
 }
 
 .topImage {
-    position: absolute;
-    z-index: 1000;
-    top: 0;
-    left: 0;
-    transform: translate(10%, -50%);
-    aspect-ratio: 1;
-    width: 100px;
-    height: auto;
-    border-radius: 50%;
-    border: 1px solid var(--primary);
-    background: var(--background);
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  transform: translate(10%, -50%);
+  aspect-ratio: 1;
+  width: 100px;
+  height: auto;
+  border-radius: 50%;
+  border: var(--border-thickness) solid var(--primary);
+  background: var(--background);
 }
 
 .topImage::before {
-    display: block;
-    height: 50px;
-    position: relative;
+  display: block;
+  height: 50px;
+  position: relative;
 }
