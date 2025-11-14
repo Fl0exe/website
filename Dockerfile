@@ -26,7 +26,7 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-RUN npm prisma generate
+RUN npx prisma generate
 
 RUN \
   if [ -f yarn.lock ]; then yarn run build; \
