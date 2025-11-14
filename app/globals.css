@@ -1,63 +1,115 @@
 @media (prefers-color-scheme: light) {
-    :root {
-        --text: rgb(10, 7, 17);
-        --background: rgb(244, 241, 251);
-        --primary: rgb(101, 53, 217);
-        --secondary: rgb(154, 119, 241);
-        --accent: rgb(125, 74, 250);
-    }
+  /* Light Mode (Latte) */
+  :root {
+    --catppuccin-rosewater: #dc8a78;
+    --catppuccin-flamingo: #dd7878;
+    --catppuccin-pink: #ea76cb;
+    --catppuccin-mauve: #8839ef;
+    --catppuccin-red: #d20f39;
+    --catppuccin-maroon: #e64553;
+    --catppuccin-peach: #fe640b;
+    --catppuccin-yellow: #df8e1d;
+    --catppuccin-green: #40a02b;
+    --catppuccin-teal: #179299;
+    --catppuccin-sky: #04a5e5;
+    --catppuccin-sapphire: #209fb5;
+    --catppuccin-blue: #1e66f5;
+    --catppuccin-lavender: #7287fd;
+    --catppuccin-text: #4c4f69;
+    --catppuccin-subtext1: #5c5f77;
+    --catppuccin-subtext0: #6c6f85;
+    --catppuccin-overlay2: #7c7f93;
+    --catppuccin-overlay1: #8c8fa1;
+    --catppuccin-overlay0: #9ca0b0;
+    --catppuccin-surface2: #acb0be;
+    --catppuccin-surface1: #bcc0cc;
+    --catppuccin-surface0: #ccd0da;
+    --catppuccin-base: #eff1f5;
+    --catppuccin-mantle: #e6e9ef;
+    --catppuccin-crust: #dce0e8;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
-    :root {
-        --text: rgb(240, 237, 248);
-        --background: rgb(8, 4, 16);
-        --primary: rgb(145, 91, 255);
-        --secondary: rgb(106, 47, 255);
-        --accent: rgb(117, 62, 255);
-    }
+  /* Dark Mode (Mocha) */
+  :root {
+    --catppuccin-rosewater: #f5e0dc;
+    --catppuccin-flamingo: #f2cdcd;
+    --catppuccin-pink: #f5c2e7;
+    --catppuccin-mauve: #cba6f7;
+    --catppuccin-red: #f38ba8;
+    --catppuccin-maroon: #eba0ac;
+    --catppuccin-peach: #fab387;
+    --catppuccin-yellow: #f9e2af;
+    --catppuccin-green: #a6e3a1;
+    --catppuccin-teal: #94e2d5;
+    --catppuccin-sky: #89dceb;
+    --catppuccin-sapphire: #74c7ec;
+    --catppuccin-blue: #89b4fa;
+    --catppuccin-lavender: #b4befe;
+    --catppuccin-text: #cdd6f4;
+    --catppuccin-subtext1: #bac2de;
+    --catppuccin-subtext0: #a6adc8;
+    --catppuccin-overlay2: #9399b2;
+    --catppuccin-overlay1: #7f849c;
+    --catppuccin-overlay0: #6c7086;
+    --catppuccin-surface2: #585b70;
+    --catppuccin-surface1: #45475a;
+    --catppuccin-surface0: #313244;
+    --catppuccin-base: #1e1e2e;
+    --catppuccin-mantle: #181825;
+    --catppuccin-crust: #11111b;
+  }
 }
 
 :root {
-    --rounding: 15px;
-    --outline-size: 2px;
-    --outline-color: var(--background);
+  --rounding: 15px;
+  --outline-size: 3px;
+  --border-thickness: 2px;
+
+  --primary: var(--catppuccin-mauve);
+  --secondary: var(--catppuccin-peach);
+  --accent: var(--catppuccin-green);
+  --outline-color: var(--catppuccin-base);
+  --text: var(--catppuccin-text);
+  --background: var(--catppuccin-base);
 }
 
 * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    scrollbar-color: var(--accent) var(--background);
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  scrollbar-color: var(--accent) var(--background);
 }
 
-
 body {
-    display: flex;
-    background-color: var(--background);
-    color: var(--text);
-    flex-direction: row;
-    flex-grow: 1;
+  display: flex;
+  background-color: var(--background);
+  color: var(--text);
+  flex-direction: row;
+  flex-grow: 1;
 }
 
 .childrenContainer {
-    width: 100vw;
-    height: 100vh;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    display: flex;
-    justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
 }
 
 a,
+.Link,
 Link {
-    text-decoration: none;
-    color: var(--primary);
+  text-decoration: none;
+  color: var(--secondary);
 }
 
 a:hover,
+.Link:hover,
 Link:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 h3 {
@@ -65,8 +117,8 @@ h3 {
 }
 
 .button {
-    background: var(--primary);
-    color: var(--background);
-    border-radius: var(--rounding);
-    padding: 10px;
+  background: var(--secondary);
+  color: var(--background);
+  border-radius: var(--rounding);
+  padding: 10px;
 }

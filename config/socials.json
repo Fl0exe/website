@@ -1,14 +1,17 @@
 [
   {
     "name": "GitLab",
+    "handle": "@Fl0exe",
     "url": "https://gitlab.pabler.de/Fl0exe"
   },
   {
-    "name": "LinkedIn",
-    "url": "https://www.linkedin.com/in/florianpabler"
+    "name": "X",
+    "handle": "@Fl0exe",
+    "url": "https://x.com/Fl0exe"
   },
   {
-    "name": "X",
-    "url": "https://x.com/Fl0exe"
+    "name": "Matrix",
+    "handle": "@florian:pabler.de",
+    "url": "copy"
   }
 ]

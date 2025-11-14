@@ -1,25 +1,26 @@
 .main {
-    display: flex;
-    flex-direction: column;
-    padding: 6rem;
-    min-height: 100vh;
-    max-width: 80rem;
-    gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  padding: 6rem;
+  min-height: 100vh;
+  max-width: 80rem;
+  gap: 1rem;
+  padding-bottom: 2rem;
 }
 
 .center {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    gap: 1rem;
-    max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 1rem;
+  max-width: 100%;
 }
 
 .center > * {
-    flex: 1 1 160px;
+  flex: 1 1 160px;
 }
 
 .emoji {
-    height: 1rem;
-    width: auto;
+  height: 1rem;
+  width: auto;
 }
